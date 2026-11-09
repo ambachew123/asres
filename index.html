@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6fb">
+    <meta name="description" content="A simple, friendly chat app demo that keeps conversations in your browser.">
+    <title>Kindred — Messages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Kindred chat">
+      <aside class="contacts-panel" aria-label="Contacts">
+        <header class="sidebar-header">
+          <a class="brand" href="#" aria-label="Kindred home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4.5 5.5h15v11h-8l-5 3v-3h-2v-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>kindred</span>
+          </a>
+          <button class="icon-button compose-button" type="button" aria-label="Find a conversation" title="Find a conversation">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </header>
+
+        <section class="inbox-heading" aria-labelledby="inbox-title">
+          <div>
+            <p class="eyebrow">YOUR SPACE</p>
+            <h1 id="inbox-title">Messages</h1>
+          </div>
+          <span class="inbox-count" id="inbox-count" aria-label="Unread message count">0</span>
+        </section>
+
+        <label class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg>
+          <span class="visually-hidden">Search contacts</span>
+          <input id="contact-search" type="search" placeholder="Search people..." autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+
+        <div class="section-label">
+          <span>ALL CONVERSATIONS</span>
+          <span class="list-count" id="list-count">0</span>
+        </div>
+        <nav class="contact-list" id="contact-list" aria-label="Conversation list"></nav>
+        <p class="sidebar-note"><span class="note-dot" aria-hidden="true"></span>Your conversations stay on this device</p>
+      </aside>
+
+      <section class="conversation-panel" id="conversation-panel" aria-label="Conversation">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-illustration" aria-hidden="true">
+            <span class="illustration-spark spark-one"></span>
+            <span class="illustration-spark spark-two"></span>
+            <div class="illustration-bubble bubble-back"></div>
+            <div class="illustration-bubble bubble-front">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="illustration-orbit"></div>
+          </div>
+          <h2>A little more connected</h2>
+          <p>Choose someone from your conversations<br class="desktop-break"> and pick up where you left off.</p>
+          <span class="empty-hint"><kbd>⌘</kbd> <kbd>K</kbd> to search</span>
+        </div>
+
+        <div class="active-conversation" id="active-conversation" hidden>
+          <header class="chat-header">
+            <button class="icon-button back-button" id="back-button" type="button" aria-label="Back to contacts">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6M9 12h11"/></svg>
+            </button>
+            <div class="chat-person" id="chat-person"></div>
+            <div class="chat-actions">
+              <button class="icon-button clear-button" id="clear-button" type="button" aria-label="Clear conversation" title="Clear conversation">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M5.5 7l1 13h11l1-13M9 7V4h6v3"/></svg>
+              </button>
+            </div>
+          </header>
+
+          <div class="conversation-date" id="conversation-date"><span>TODAY</span></div>
+          <div class="message-list" id="message-list" role="log" aria-live="polite" aria-relevant="additions text"></div>
+
+          <form class="composer" id="message-form">
+            <label class="visually-hidden" for="message-input">Write a message</label>
+            <textarea id="message-input" name="message" rows="1" maxlength="2000" placeholder="Write a message..." required></textarea>
+            <div class="composer-footer">
+              <p class="composer-hint">Press <kbd>Enter</kbd> to send <span>·</span> <kbd>Shift + Enter</kbd> for a new line</p>
+              <div class="composer-controls">
+                <span class="character-count" id="character-count" aria-live="polite"></span>
+                <button class="send-button" id="send-button" type="submit" disabled>
+                  <span>Send</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-5 16-3-7-8-1Z"/><path d="m12 13 8-9"/></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
